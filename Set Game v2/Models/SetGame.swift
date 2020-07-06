@@ -59,10 +59,16 @@ struct SetGame {
         }
     }
  
-    
+    mutating func setgivenCardIsSelectedAnimationToggle(setCard: SetCard) {
+        if let index = playingTwelveDeck.firstIndex(of: setCard) {
+            playingTwelveDeck[index].isSelectedAnimationToggle = false
+        }
+        
+    }
   
     mutating func choose(setCard: SetCard) {
         if let index = playingTwelveDeck.firstIndex(of: setCard) {
+            playingTwelveDeck[index].isSelectedAnimationToggle = true
             if isFaceUpCardCount < 3 {
                 if playingTwelveDeck[index].isSelected == false {
                     playingTwelveDeck[index].isSelected = true
@@ -112,7 +118,9 @@ struct SetGame {
                                                               for playingTwelveDeckIndex in self.playingTwelveDeck.indices {
                                                                   for selectedCardIndex in selectedCardsArray.indices {
                                                                       if selectedCardsArray[selectedCardIndex].id == playingTwelveDeck[playingTwelveDeckIndex].id {
-                                                                          print("card Value : \(playingTwelveDeck[playingTwelveDeckIndex])")
+                                                                        
+                                                                        playingTwelveDeck[playingTwelveDeckIndex].isSelectedAnimationToggle = false
+                                                                        playingTwelveDeck[playingTwelveDeckIndex].isSelected = false
                                                                           playingTwelveDeck[playingTwelveDeckIndex].isMatched = true
                                                                         
                                                                         
@@ -176,6 +184,7 @@ struct SetGame {
         var isMatched = false
         var position : Int
         var id = UUID()
+        var isSelectedAnimationToggle : Bool
         
         
     }

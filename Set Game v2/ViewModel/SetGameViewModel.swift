@@ -24,7 +24,22 @@ class SetGameViewModel: ObservableObject {
     }
     
     init() {
-        self.setGameModel = SetGame(deck:  Self.createSetGameDeck())
+        self.setGameModel = SetGame(deck:  Self.createTestSetGameDeck())
+       
+    }
+    
+    
+    static func createTestSetGameDeck() -> Array<SetGame.SetCard> {
+        var deck : Array<SetGame.SetCard> = []
+        
+        for _ in 0..<81 {
+            let setCard = SetGame.SetCard(color: ColorValue.red, shapeName: ShapeName.Capsule, shading: .Fill, count: 3, position: positionOfCard, isSelectedAnimationToggle: false)
+            deck.append(setCard)
+            
+            positionOfCard += 1
+        }
+        
+        return deck
         
     }
      
@@ -35,7 +50,7 @@ class SetGameViewModel: ObservableObject {
                 for shape in shapes {
                     for shading in shadings {
                         for count in 1...3 {
-                            let setCard = SetGame.SetCard(color: color, shapeName: shape, shading: shading, count: count, position: positionOfCard)
+                            let setCard = SetGame.SetCard(color: color, shapeName: shape, shading: shading, count: count, position: positionOfCard, isSelectedAnimationToggle: false)
                             deck.append(setCard)
                             
                             positionOfCard += 1
@@ -64,6 +79,7 @@ class SetGameViewModel: ObservableObject {
    
     func choose(setCard: SetGame.SetCard) {
         self.setGameModel.choose(setCard: setCard)
+        
     }
     
    

@@ -11,17 +11,23 @@ import SwiftUI
 struct SetCardGameView: View {
     
     @ObservedObject var setGameViewModel : SetGameViewModel
+   
     
     var body: some View {
         
-        Grid(self.setGameViewModel.playingTwelveSetCards) { setCard in
-            
-            CardView(setCard: setCard)
-                    .padding(7)
-                    .onTapGesture {
-                        self.setGameViewModel.choose(setCard: setCard)
-                    }
-        }
+        
+            Grid(self.setGameViewModel.playingTwelveSetCards) { setCard in
+                
+                CardView(setCard: setCard)
+                        .padding(7)
+                        .onTapGesture {
+                            self.setGameViewModel.choose(setCard: setCard)
+                        }
+            }
+        
+      
+       
+        
             
                 
         
@@ -39,8 +45,8 @@ struct SetCardGameView: View {
 
 struct CardView : View {
     
-    @State private var isLoading : Bool = false
     
+    @State private var isOn : Bool = false
     
     
     
@@ -51,10 +57,10 @@ struct CardView : View {
     var isMatched : Bool
     var isSelected : Bool
     
-    
-    
-    var randomXOffsetValue : CGFloat = generateRandomNumberForOffset(uValue: 300, lValue: -300)
-    var randomYOffsetValue : CGFloat = generateRandomNumberForOffset(uValue: 300, lValue: -300)
+//    var isSelectedAnimationToggle : Bool
+//
+//    var randomXOffsetValue : CGFloat = generateRandomNumberForOffset(uValue: 300, lValue: -300)
+//    var randomYOffsetValue : CGFloat = generateRandomNumberForOffset(uValue: 300, lValue: -300)
     
     
     
@@ -65,41 +71,56 @@ struct CardView : View {
         self.count = setCard.count
         self.isMatched = setCard.isMatched
         self.isSelected = setCard.isSelected
+//        self.isSelectedAnimationToggle = setCard.isSelectedAnimationToggle
+        
+        
+        
     }
     
-    var body: some View {
     
-       
-                ZStack {
-                    if isLoading && !isMatched {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(isSelected ? Color.black : Color.gray, lineWidth: isSelected ? 9 : 5)
-                                .transition(.offset(x: randomXOffsetValue,
-                                                    y: randomYOffsetValue))
-                                .zIndex(0)
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.white)
-                                .transition(.offset(x: randomXOffsetValue,
-                                y: randomYOffsetValue))
-                                .zIndex(1)
-                        SetCardContentWrapper(colorValue: colorValue, shapeName: shapeName, shading: shading, count: count)
-                            .transition(.offset(x: randomXOffsetValue,
-                                                y: randomYOffsetValue))
-                            .padding(.horizontal)
-                            .zIndex(2)
-                        }
+    
+    
+    
+    
+    var body: some View {
+        
+        
+        ZStack {
+        
+                Group {
+                        if isOn {
+                            
+                                SetCardContentWrapper(colorValue: colorValue, shapeName: shapeName, shading: shading, count: count)
                                 
-                    }
-//                    .frame(width: 150, height: 200)
-                    .animation(.easeIn(duration: 0.3))
-                    .onAppear {
-                        self.isLoading = true
-                    }
+                                    .padding(.horizontal)
+                                    .modifier(ShowCard(show: !isMatched))
+                                    .modifier(Cardify(isSelected: isSelected))
+                                    .transition(.scale)
+
+                        }
+                }
+            
+        }
+        .animation(.easeInOut(duration: 1.2))
+        .onAppear {
+            self.isOn = true
+        }
+       
+     
+    }
+                            
+                        
+                        
+                        
+                
+                    
+
                    
+        
                     
     
         
-    }
+    
     
     static func generateRandomNumberForOffset(uValue: Int, lValue: Int) -> CGFloat {
              
@@ -119,7 +140,7 @@ struct SetCardContentWrapper: View {
     var count : Int
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             ForEach(0..<count) { _ in
             
                 
@@ -148,7 +169,7 @@ struct SetCardContentWrapper: View {
     func getShapes(with color: Color, shading: Shadings, shapeName: ShapeName) -> some View{
         
         GeometryReader { geo in
-                ZStack {
+            ZStack(alignment: .center) {
                     if shapeName == .Capsule {
                         if shading == .Fill {
                             Capsule()

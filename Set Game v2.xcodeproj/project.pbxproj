@@ -22,6 +22,8 @@
 		8007F3AF24B0E0B600CC560C /* ColorValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8007F3AE24B0E0B600CC560C /* ColorValue.swift */; };
 		8007F3B124B0E0D600CC560C /* SetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8007F3B024B0E0D600CC560C /* SetGameViewModel.swift */; };
 		8007F3B524B0E13900CC560C /* MaskingRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8007F3B424B0E13900CC560C /* MaskingRect.swift */; };
+		809B4EAA24B33275001F9C37 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809B4EA924B33275001F9C37 /* Cardify.swift */; };
+		809B4EAC24B34361001F9C37 /* ShowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809B4EAB24B34361001F9C37 /* ShowCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		8007F3AE24B0E0B600CC560C /* ColorValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorValue.swift; sourceTree = "<group>"; };
 		8007F3B024B0E0D600CC560C /* SetGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetGameViewModel.swift; sourceTree = "<group>"; };
 		8007F3B424B0E13900CC560C /* MaskingRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskingRect.swift; sourceTree = "<group>"; };
+		809B4EA924B33275001F9C37 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
+		809B4EAB24B34361001F9C37 /* ShowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +140,10 @@
 			children = (
 				8007F3B324B0E13900CC560C /* Shapes */,
 				8007F38E24B0C9A000CC560C /* SetCardGameView.swift */,
+				809B4EAB24B34361001F9C37 /* ShowCard.swift */,
 				8007F39E24B0DA6800CC560C /* GridLayout.swift */,
 				8007F3A024B0DA9500CC560C /* Grid.swift */,
+				809B4EA924B33275001F9C37 /* Cardify.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,10 +229,12 @@
 			files = (
 				8007F3B524B0E13900CC560C /* MaskingRect.swift in Sources */,
 				8007F3AD24B0E0AF00CC560C /* ShapeName.swift in Sources */,
+				809B4EAC24B34361001F9C37 /* ShowCard.swift in Sources */,
 				8007F38B24B0C9A000CC560C /* AppDelegate.swift in Sources */,
 				8007F38D24B0C9A000CC560C /* SceneDelegate.swift in Sources */,
 				8007F3AB24B0E0A500CC560C /* Shadings.swift in Sources */,
 				8007F38F24B0C9A000CC560C /* SetCardGameView.swift in Sources */,
+				809B4EAA24B33275001F9C37 /* Cardify.swift in Sources */,
 				8007F3A124B0DA9500CC560C /* Grid.swift in Sources */,
 				8007F3B124B0E0D600CC560C /* SetGameViewModel.swift in Sources */,
 				8007F39F24B0DA6800CC560C /* GridLayout.swift in Sources */,
